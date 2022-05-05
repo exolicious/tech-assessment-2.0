@@ -22,6 +22,7 @@
 import AccountCard from './components/AccountCard';
 import TotalBalance from './components/TotalBalance';
 
+
 export default {
   name: 'App',
 
@@ -33,5 +34,15 @@ export default {
   data: () => ({
     //
   }),
+
+  created() {
+    this.$http
+      .get('api/accounts')
+      .then(response => console.log(response));
+  },
+
+  methods: {
+
+  }
 };
 </script>
