@@ -12,7 +12,9 @@
     </v-app-bar>
     <v-main>
       <TotalBalance/>
-      <AccountCard v-for="index in 10" :key="index">
+      <AccountCard 
+        v-for="account in accounts" :key="account.AccountId"
+        :account = account>
       </AccountCard>
     </v-main>
   </v-app>
@@ -32,13 +34,15 @@ export default {
   },
 
   data: () => ({
-    //
+    accounts: [],
   }),
 
   created() {
     this.$http
       .get('api/accounts')
-      .then(response => console.log(response));
+      .then(response => {
+        this.accounts = response.data;
+      });
   },
 
   methods: {

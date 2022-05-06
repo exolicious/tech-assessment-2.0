@@ -13,15 +13,15 @@
                     >
                         <v-col cols="2">
                             <v-img 
-                                src="http://placehold.jp/150x150.png" 
+                                src="https://developer.sandbox.natwest.com/images/natwest-logo-stacked.svg" 
                                 contain
                             />
                         </v-col>
                         <v-col cols="6">
-                            <div class="text-h6"> Sparkonto </div>
+                            <div class="text-h6"> {{account.accountSubType}} </div>
                         </v-col>
                         <v-col cols="2">
-                            <div class="text-h6"> 123123 CHF </div>
+                            <div class="text-h6" :class="account.sign === '-' ? 'red--text': ''"> {{account.sign}} {{account.balance}} {{account.currency}} </div>
                         </v-col>
                     </v-row>
                     <v-row class="mt-0" justify="center">
@@ -63,8 +63,18 @@
   export default {
     name: 'AccountCard',
 
+    props: {
+        account: {
+            type: Object,
+            required: true
+        }
+    },
+
     data: () => ({
       
     }),
+    computed: {
+
+    }
   }
 </script>
