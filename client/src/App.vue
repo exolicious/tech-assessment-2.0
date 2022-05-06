@@ -12,6 +12,14 @@
     </v-app-bar>
     <v-main>
       <TotalBalance/>
+      <v-row justify="center" v-if="loadingAccounts">
+        <v-progress-circular
+          indeterminate
+          color="primary"
+          size="100"
+        >
+        </v-progress-circular>
+      </v-row>
       <AccountCard 
         v-for="account in accounts" :key="account.AccountId"
         :account = account>
@@ -35,14 +43,22 @@ export default {
 
   data: () => ({
     accounts: [],
+    loadingAccounts: false,
   }),
 
-  created() {
+  mounted() {
+    this.loadingAccounts = true;
     this.$http
       .get('api/accounts')
       .then(response => {
         this.accounts = response.data;
-      });
+        this.loadingAccounts = false;
+      })
+      .catch(e => {
+        console.log(e);
+        //error page or something
+      })
+
   },
 
   methods: {
