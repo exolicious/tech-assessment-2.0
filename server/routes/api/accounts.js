@@ -142,7 +142,7 @@ function createRelevantResponseJSON(accounts, accountBalances) {
                         currency: account.Currency,
                         balance: balance.Amount.Amount,
                         valuta: balance.DateTime,
-                        sign: balance.CreditDebitIndicator === 'Credit' ? "" : "-"
+                        sign: balance.CreditDebitIndicator === 'Credit' ? "" : "-" //kinda ew 
                     }
         relevantResponseJSON.push(temp);
     }
