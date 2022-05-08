@@ -35,7 +35,6 @@
 import AccountCard from './components/AccountCard';
 import TotalBalance from './components/TotalBalance';
 
-
 export default {
   name: 'App',
 
@@ -73,11 +72,13 @@ export default {
         }, 0);
     },
   }
-};
+}
 </script>
 <style scoped>
+
 .theme--light.v-application {
   background: #f7f7f7;
   color: rgba(0, 0, 0, 0.87);
 }
+
 </style>
