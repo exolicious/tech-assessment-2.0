@@ -29,30 +29,19 @@
                     no-gutters
                 >
                     <v-col cols="2">
-                        <v-img src="https://www.natwest.com/content/dam/natwest_com/navigation/header/natwest-logo.png" contain />
+                        <span class="text-h5"> {{formatDate(transaction.date)}} </span>
                     </v-col>
-                    <v-spacer></v-spacer>
-                    <v-col cols="2">
-                        <span class="text-h5"> {{account.accountType}} </span> 
-                        <br/>
-                        <span class="text-subtitle-2"> {{account.accountSubType}} </span>
+
+                    <v-col class="text-center" cols="8">
+                        <span class="text-h4"> {{transaction.information}} </span>
                     </v-col>
-                    <v-col cols="5" class="text-end">
+                    <v-col cols="2" class="text-end">
                         <div 
-                            class="text-h4" 
-                            :class="account.sign === '-' ? 'red--text': ''"
+                            class="text-h5" 
+                            :class="transaction.sign === '-' ? 'red--text': ''"
                         > 
-                            {{account.sign}} {{formatBalance(account.balance)}} {{account.currency}} 
+                            {{transaction.sign}} {{transaction.amount}} {{transaction.currency}}
                         </div>
-                    </v-col>
-                </v-row>
-                <v-row 
-                    no-gutters
-                    class="py-2"
-                    justify="end"
-                >
-                    <v-col class="text-caption grey--text text--darken-1 font-italic">
-                        Valuta: {{formatDate(account.valuta)}}
                     </v-col>
                 </v-row>
             </v-sheet>
@@ -62,10 +51,10 @@
 
 <script>
   export default {
-    name: 'AccountCard',
+    name: 'TransactionCard',
 
     props: {
-        account: {
+        transaction: {
             required: true
         }
     },

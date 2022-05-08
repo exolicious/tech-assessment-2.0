@@ -12,7 +12,7 @@
             >
             </v-progress-circular>
         </v-row>
-        <TransitionGroup name="accounts">
+        <TransitionGroup name="list">
             <AccountCard 
                 v-for="account in accounts" 
                 :key="account.accountId"
@@ -42,7 +42,7 @@ export default {
     created() {
         this.loadingAccounts = true;
         this.$http
-        .get('api/accounts')
+        .post('api/accounts', {token: localStorage.getItem("token")})
         .then(response => {
             this.accounts = response.data;
             this.loadingAccounts = false;
@@ -67,12 +67,13 @@ export default {
 </script>
 <style scoped>
 
-.accounts-enter-active, .accounts-leave-active {
+.list-enter-active, .list-leave-active {
   transition: all 0.5s;
 }
-.accounts-enter, .accounts-leave-to /* .list-leave-active below version 2.1.8 */ {
+.list-enter, .list-leave-to {
   opacity: 0;
-  transform: translateY(30px);
+  transform: translateY(-30px);
 }
+
 </style>
 

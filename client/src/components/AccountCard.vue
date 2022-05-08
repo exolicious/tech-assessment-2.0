@@ -1,6 +1,11 @@
 <template>
-    <v-row class="pb-8 text-center" justify="center">
-        <v-col @click="openTransactions(account.accountId, account.balance)" cols="12" md="6">
+    <v-row no-gutters class="pb-8 text-center" justify="center">
+        <v-col 
+            @click="openTransactions(account.accountId, account.balance)" 
+            class="mouse-pointer" 
+            cols="12" 
+            md="6"
+        >
             <v-sheet 
                 elevation="1"
                 rounded
@@ -33,13 +38,13 @@
                     </v-col>
                     <v-spacer></v-spacer>
                     <v-col cols="2">
-                        <span class="text-h5"> {{account.accountType}} </span> 
+                        <span class="text-h6"> {{account.accountType}} </span> 
                         <br/>
                         <span class="text-subtitle-2"> {{account.accountSubType}} </span>
                     </v-col>
                     <v-col cols="5" class="text-end">
                         <div 
-                            class="text-h4" 
+                            class="text-h5" 
                             :class="account.sign === '-' ? 'red--text': ''"
                         > 
                             {{account.sign}} {{formatBalance(account.balance)}} {{account.currency}} 

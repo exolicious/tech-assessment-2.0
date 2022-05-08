@@ -2,7 +2,13 @@
     <div>
         <TotalBalance
             :total="total"
-        />
+        >
+            <template v-slot:bank-logo>
+                <v-row class="py-8" justify="center">
+                    <v-img max-width="200" src="https://www.natwest.com/content/dam/natwest_com/navigation/header/natwest-logo.png" contain />
+                </v-row>
+            </template>
+        </TotalBalance>
         <v-row v-if="loadingTransactions" justify="center">
             <v-progress-circular
                 indeterminate
@@ -11,11 +17,13 @@
             >
             </v-progress-circular>
         </v-row>
-        <TransactionCard 
-            v-for="transaction in transactions" 
-            :key="transaction.transactionId"
-            :transaction = account
-        />
+        <TransitionGroup name="list">
+            <TransactionCard 
+                v-for="transaction in transactions" 
+                :key="transaction.transactionId"
+                :transaction = transaction
+            />
+        </TransitionGroup>
     </div>
 </template>
 
@@ -50,9 +58,9 @@ export default {
     mounted() {
         console.log(this.accountId);
 
-        /*this.loadingTransactions = true;
+        this.loadingTransactions = true;
         this.$http
-        .get('api/transactions')
+        .post('api/transactions',  { accountId: this.accountId, token: localStorage.getItem("token") })
         .then(response => {
             this.transactions = response.data;
             this.loadingTransactions = false;
@@ -60,7 +68,18 @@ export default {
         .catch(e => {
             console.log(e);
             //error page or something
-        })*/
+        })
     },
 }
 </script>
+<style scoped>
+
+.list-enter-active, .list-leave-active {
+  transition: all 0.5s;
+}
+.list-enter, .list-leave-to {
+  opacity: 0;
+  transform: translateY(-30px);
+}
+
+</style>

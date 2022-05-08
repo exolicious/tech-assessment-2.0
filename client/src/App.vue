@@ -11,7 +11,7 @@
       </div>
     </v-app-bar>
     <v-main>
-      <Transition appear name="fade" mode="out-in">
+      <Transition name="fade" mode="out-in">
         <keep-alive>
           <router-view />
         </keep-alive>
@@ -25,8 +25,10 @@
 export default {
   name: 'App',
 }
+
 </script>
-<style scoped>
+
+<style>
 
 .theme--light.v-application {
   background: #f7f7f7;
@@ -38,6 +40,10 @@ export default {
 }
 .fade-enter, .fade-leave-to /* .fade-leave-active in <2.1.8 */ {
     opacity: 0;
+}
+
+.mouse-pointer:hover {
+  cursor: pointer;
 }
 
 </style>
