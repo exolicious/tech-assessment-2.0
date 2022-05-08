@@ -39,7 +39,7 @@ export default {
         loadingAccounts: false,
     }),
 
-    mounted() {
+    created() {
         this.loadingAccounts = true;
         this.$http
         .get('api/accounts')
@@ -68,7 +68,7 @@ export default {
 <style scoped>
 
 .accounts-enter-active, .accounts-leave-active {
-  transition: all 1s;
+  transition: all 0.5s;
 }
 .accounts-enter, .accounts-leave-to /* .list-leave-active below version 2.1.8 */ {
   opacity: 0;

@@ -12,9 +12,10 @@
     </v-app-bar>
     <v-main>
       <Transition appear name="fade" mode="out-in">
-        <router-view />
+        <keep-alive>
+          <router-view />
+        </keep-alive>
       </Transition>
-
     </v-main>
   </v-app>
 </template>
@@ -33,7 +34,7 @@ export default {
 }
 
 .fade-enter-active, .fade-leave-active {
-    transition: opacity .5s;
+    transition: opacity .275s;
 }
 .fade-enter, .fade-leave-to /* .fade-leave-active in <2.1.8 */ {
     opacity: 0;
