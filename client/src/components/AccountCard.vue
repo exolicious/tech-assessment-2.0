@@ -1,6 +1,6 @@
 <template>
     <v-row class="pb-8 text-center" justify="center">
-        <v-col cols="12" md="6">
+        <v-col @click="openTransactions(account.accountId, account.balance)" cols="12" md="6">
             <v-sheet 
                 elevation="1"
                 rounded
@@ -82,6 +82,9 @@
         formatBalance(balance) {
             return Number.parseFloat(balance).toFixed(2);
         },
+        openTransactions(accountId, accountBalance) {
+            this.$router.push({ name: 'TransactionsView', params: { accountId: accountId, total: accountBalance }})
+        }
     }
   }
 </script>

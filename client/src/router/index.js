@@ -9,6 +9,12 @@ const routes = [
     name: 'AccountsView',
     component: () => import(/* webpackChunkName: "about" */ '../views/AccountsView.vue')
   },
+  {
+    path: '/transactions/',
+    name: 'TransactionsView',
+    component: () => import(/* webpackChunkName: "about" */ '../views/TransactionsView.vue'),
+    props: true,
+  },
 ]
 
 const router = new VueRouter({

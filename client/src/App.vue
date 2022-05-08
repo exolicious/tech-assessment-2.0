@@ -11,7 +11,10 @@
       </div>
     </v-app-bar>
     <v-main>
-      <router-view></router-view>
+      <Transition appear name="fade" mode="out-in">
+        <router-view />
+      </Transition>
+
     </v-main>
   </v-app>
 </template>
@@ -27,6 +30,13 @@ export default {
 .theme--light.v-application {
   background: #f7f7f7;
   color: rgba(0, 0, 0, 0.87);
+}
+
+.fade-enter-active, .fade-leave-active {
+    transition: opacity .5s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active in <2.1.8 */ {
+    opacity: 0;
 }
 
 </style>

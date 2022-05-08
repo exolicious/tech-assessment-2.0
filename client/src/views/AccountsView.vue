@@ -1,21 +1,24 @@
 <template>
     <div>
         <TotalBalance
+            v-if="!loadingAccounts"
             :total="total"
         />
-        <v-row v-if="loadingAccounts" justify="center">
+        <v-row class="pt-12" v-if="loadingAccounts" justify="center">
             <v-progress-circular
-            indeterminate
-            color="primary"
-            size="100"
+                indeterminate
+                color="primary"
+                size="100"
             >
             </v-progress-circular>
         </v-row>
-        <AccountCard 
-            v-for="account in accounts" 
-            :key="account.AccountId"
-            :account = account
-        />
+        <TransitionGroup name="accounts">
+            <AccountCard 
+                v-for="account in accounts" 
+                :key="account.accountId"
+                :account = account
+            />
+        </TransitionGroup>
     </div>
 </template>
 
@@ -50,15 +53,26 @@ export default {
         })
     },
 
-  computed: {
-    total: function() {
-      return this.accounts.reduce((accu, account) => {
-        if(account.sign === "") 
-          return accu + parseFloat(account.balance);
-        else
-          return accu - parseFloat(account.balance);
-        }, 0);
-    },
-  }
+    computed: {
+        total: function() {
+        return this.accounts.reduce((accu, account) => {
+            if(account.sign === "") 
+            return accu + parseFloat(account.balance);
+            else
+            return accu - parseFloat(account.balance);
+            }, 0);
+        },
+    }
 }
 </script>
+<style scoped>
+
+.accounts-enter-active, .accounts-leave-active {
+  transition: all 1s;
+}
+.accounts-enter, .accounts-leave-to /* .list-leave-active below version 2.1.8 */ {
+  opacity: 0;
+  transform: translateY(30px);
+}
+</style>
+
