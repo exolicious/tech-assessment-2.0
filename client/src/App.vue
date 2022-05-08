@@ -11,8 +11,10 @@
       </div>
     </v-app-bar>
     <v-main>
-      <TotalBalance/>
-      <v-row justify="center" v-if="loadingAccounts">
+      <TotalBalance
+        :total="total"
+      />
+      <v-row v-if="loadingAccounts" justify="center">
         <v-progress-circular
           indeterminate
           color="primary"
@@ -21,9 +23,10 @@
         </v-progress-circular>
       </v-row>
       <AccountCard 
-        v-for="account in accounts" :key="account.AccountId"
-        :account = account>
-      </AccountCard>
+        v-for="account in accounts" 
+        :key="account.AccountId"
+        :account = account 
+      />
     </v-main>
   </v-app>
 </template>
@@ -58,11 +61,23 @@ export default {
         console.log(e);
         //error page or something
       })
-
   },
 
-  methods: {
-
+  computed: {
+    total: function() {
+      return this.accounts.reduce((accu, account) => {
+        if(account.sign === "") 
+          return accu + parseFloat(account.balance);
+        else
+          return accu - parseFloat(account.balance);
+        }, 0);
+    },
   }
 };
 </script>
+<style scoped>
+.theme--light.v-application {
+  background: #f7f7f7;
+  color: rgba(0, 0, 0, 0.87);
+}
+</style>

@@ -140,13 +140,22 @@ function createRelevantResponseJSON(accounts, accountBalances) {
                         accountType: account.AccountType,
                         accountSubType: account.AccountSubType,
                         currency: account.Currency,
-                        balance: balance.Amount.Amount,
+                        balance: roundBalance(balance.Amount.Amount),
                         valuta: balance.DateTime,
                         sign: balance.CreditDebitIndicator === 'Credit' ? "" : "-" //kinda ew 
                     }
         relevantResponseJSON.push(temp);
     }
     return relevantResponseJSON;
+}
+
+function roundBalance(balance) {
+    var m = Number((Math.abs(balance) * 100).toPrecision(15));
+    let twoDecimals = Math.round(m) / 100 * Math.sign(balance);
+    
+    let rappen = twoDecimals * 100;
+    let roundedRappenTo5 = Math.round(rappen/5)*5;
+    return roundedRappenTo5 / 100;
 }
 
 module.exports = router;

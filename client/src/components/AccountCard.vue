@@ -2,51 +2,58 @@
     <v-row class="pb-8 text-center" justify="center">
         <v-col cols="12" md="6">
             <v-sheet 
-                elevation="2"
+                elevation="1"
                 rounded
+                color="grey lighten-3"
             >
                 <v-row 
-                    class="px-4" 
+                    no-gutters 
+                    justify="end"
+                >
+                    <v-btn
+                        icon
+                        color="primary"
+                    >
+                        <v-icon>mdi-chart-line</v-icon>
+                    </v-btn>
+                    <v-btn
+                        icon
+                        color="primary">
+                        <v-icon>mdi-star</v-icon>
+                    </v-btn>
+                </v-row>  
+                <v-row 
+                    class="px-4 py-8" 
                     align="center" 
                     justify="space-between"
+                    no-gutters
                 >
-                    <v-col cols="2">
-                        <v-img 
-                            src="https://developer.sandbox.natwest.com/images/natwest-logo-stacked.svg" 
-                            contain
-                        />
+                    <v-col cols="3">
+                        <v-img src="https://www.natwest.com/content/dam/natwest_com/navigation/header/natwest-logo.png" contain />
                     </v-col>
-                    <v-col cols="6">
-                        <div class="text-h6"> {{account.accountSubType}} </div>
+                    <v-col cols="3">
+                        <span class="text-h5"> {{account.accountType}} </span> 
+                        <br/>
+                        <span class="text-subtitle-2"> {{account.accountSubType}} </span>
                     </v-col>
-                    <v-col cols="2">
-                        <div class="text-h6" :class="account.sign === '-' ? 'red--text': ''"> {{account.sign}} {{account.balance}} {{account.currency}} </div>
+                    <v-col cols="3">
+                        <div 
+                            class="text-h6" 
+                            :class="account.sign === '-' ? 'red--text': ''"
+                        > 
+                            {{account.sign}} {{formatBalance(account.balance)}} {{account.currency}} 
+                        </div>
                     </v-col>
                 </v-row>
-                <v-row class="mt-0" justify="center">
-                    <v-col cols="6" >
-                        <v-btn
-                            large
-                            icon
-                            color="primary"
-                        >
-                            <v-icon>mdi-chevron-down</v-icon>
-                        </v-btn>
-                        <v-btn
-                            large
-                            icon
-                            color="primary"
-                        >
-                            <v-icon>mdi-chart-line</v-icon>
-                        </v-btn>
-                        <v-btn
-                            large
-                            icon
-                            color="primary">
-                            <v-icon>mdi-star</v-icon>
-                        </v-btn>
+                <v-row 
+                    no-gutters
+                    class="py-2"
+                    justify="end"
+                >
+                    <v-col class="text-caption grey--text text--darken-1 font-italic">
+                        Valuta: {{formatDate(account.valuta)}}
                     </v-col>
-                </v-row>  
+                </v-row>
             </v-sheet>
         </v-col>
     </v-row>
@@ -65,8 +72,15 @@
     data: () => ({
       
     }),
-    computed: {
 
+    methods: {
+        formatDate(dateIsoString) {
+            return new Date(dateIsoString).toDateString();
+        },
+
+        formatBalance(balance) {
+            return Number.parseFloat(balance).toFixed(2);
+        },
     }
   }
 </script>
