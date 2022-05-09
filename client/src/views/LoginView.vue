@@ -1,10 +1,10 @@
 <template>
-    <v-container fill-height>
-        <v-row justify="center">
-            <span class="text-h3">Login</span>
+    <v-container>
+        <v-row class="pt-12 pb-10" justify="center">
+            <span class="text-h3 font-weight-bold">Login</span>
         </v-row>
         <v-row class="ma-0" justify="center">
-            <v-col cols="6">
+            <v-col cols="4">
                 <v-sheet  
                     class="pa-4"
                     elevation="1"
