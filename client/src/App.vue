@@ -11,11 +11,13 @@
       </div>
     </v-app-bar>
     <v-main>
-        <transition :name="$route.meta.transition" mode="out-in">
-          <router-view :key="$route.params.accountId" v-slot="{ Component }">
-            <component :is="Component" />
-          </router-view>
-        </transition>
+      <transition :name="$route.meta.transition" mode="out-in">
+        <keep-alive>
+        <router-view :key="$route.params.accountId" v-slot="{ Component }">
+          <component :is="Component" />
+        </router-view>
+        </keep-alive>
+      </transition>
     </v-main>
   </v-app>
 </template>
