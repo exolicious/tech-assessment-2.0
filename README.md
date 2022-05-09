@@ -7,7 +7,7 @@ Tech Assessment for Oepfelbaum - Digital Wallet by Egzon Demaj
 ## How to run the application locally
 1. :warning: Before anything else, make sure [Node](https://nodejs.org/en/) (+ npm) is installed
 2. Clone repository
-3. Open a terminal Inside the root directory and run `npm install`
+3. Open a terminal inside the root directory and run `npm install`
 4. Once npm install is finished you can run `npm run simple-dev`
 5. The application should now be running at http://localhost:8080/
 
@@ -31,9 +31,9 @@ Tech Assessment for Oepfelbaum - Digital Wallet by Egzon Demaj
   - ...
 
 - <b>Frontend: </b>
-  - Allow the user to choose a period of time, in which he wants to look at his transactions
-  - Allow for more Banking-Use-Cases to be accessible by the user (depending on what the Bank-APIs offer)
+  - Allow the user to choose a period of time, for which the transactions will get listed (as opposoed to receiving them all at once)
   - Pagination
+  - Allow for more Banking-Use-Cases to be accessible by the user (depending on what the Bank-APIs offer)
   - Introduce a State-Management library (store), especially as the Application gets more features
 
 - <b>General: </b>
