@@ -35,7 +35,9 @@ Tech Assessment for Oepfelbaum - Digital Wallet by Egzon Demaj
   - Pagination
   - Allow for more Banking-Use-Cases to be accessible by the user (depending on what the Bank-APIs offer)
   - Introduce a State-Management library (store), especially as the Application gets more features
+  - ...
 
 - <b>General: </b>
   - Make it so that the Customer Consent is not just "skipped" programmatically in production
   - Establish Testing and Build pipeline
+  - ...
