@@ -1,35 +1,38 @@
 <template>
     <v-container fill-height>
-    <v-row justify="center">
-        <v-col cols="6">
-            <v-sheet  
-                class="pa-4"
-                elevation="1"
-                rounded
-                color="grey lighten-3"
-            >
-                <v-form class="text-end">
-                    <v-text-field
-                        v-model="email"
-                        label="E-mail"
-                    >
-                    </v-text-field>
-                     <v-text-field
-                        v-model="password"
-                        label="Password"
-                    >
-                    </v-text-field>
-                    <v-btn 
-                        @click="login" 
-                        color="primary"
-                        :loading="loadingAuth"
-                    >
-                        login
-                    </v-btn>
-                </v-form>
-            </v-sheet>
-        </v-col>
-    </v-row>
+        <v-row justify="center">
+            <span class="text-h3">Login</span>
+        </v-row>
+        <v-row class="ma-0" justify="center">
+            <v-col cols="6">
+                <v-sheet  
+                    class="pa-4"
+                    elevation="1"
+                    rounded
+                    color="grey lighten-3"
+                >
+                    <v-form class="text-end">
+                        <v-text-field
+                            v-model="email"
+                            label="E-mail"
+                        >
+                        </v-text-field>
+                        <v-text-field
+                            v-model="password"
+                            label="Password"
+                        >
+                        </v-text-field>
+                        <v-btn 
+                            @click="login" 
+                            color="primary"
+                            :loading="loadingAuth"
+                        >
+                            login
+                        </v-btn>
+                    </v-form>
+                </v-sheet>
+            </v-col>
+        </v-row>
     </v-container>
 </template>
 

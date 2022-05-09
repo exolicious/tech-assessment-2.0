@@ -1,5 +1,5 @@
 <template>
-    <v-row class="text-center" justify="center">
+    <v-row no-gutters class="pb-6" justify="center">
         <v-col cols="12" md="6">
             <v-sheet 
                 elevation="1"
@@ -24,7 +24,7 @@
                         <br/>
                         <div 
                             class="text-h5" 
-                            :class="transaction.sign === '-' ? 'red--text': ''"
+                            :class="transaction.sign === '-' ? 'red--text': 'green--text'"
                         > 
                             {{transaction.sign}} {{formatBalance(transaction.amount)}} {{transaction.currency}}
                         </div>
@@ -51,7 +51,7 @@
 
     methods: {
         formatDate(dateIsoString) {
-            return new Date(dateIsoString).toDateString();
+            return new Date(dateIsoString).toLocaleString('de-DE');
         },
 
         formatBalance(balance) {

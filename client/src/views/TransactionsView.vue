@@ -17,8 +17,49 @@
             >
             </v-progress-circular>
         </v-row>
+        <v-row 
+            no-gutters 
+            justify="center" 
+            class="pb-6"
+        >
+            <v-col cols="6" class="text-end">
+                <v-tooltip open-delay="375" top>
+                    <template v-slot:activator="{ on }">
+                        <v-btn
+                            @click="sortTransactionsByDateDesc"
+                            icon
+                            large
+                            :color="sortedByDate === 'asc' ? 'grey' : 'primary'"
+                            v-on="on"
+                        >
+                            <v-icon>mdi-sort-clock-ascending</v-icon>
+                        </v-btn>
+                    </template>
+                    <span>
+                        Neuste Transaktionen Zuerst
+                    </span>
+                </v-tooltip>
+                <v-tooltip open-delay="375" top>
+                    <template v-slot:activator="{ on }">
+                        <v-btn
+                            @click="sortTransactionsByDateAsc"
+                            icon
+                            large
+                            :color="sortedByDate === 'desc' ? 'grey' : 'primary'"
+                            v-on="on"
+                        >
+                            <v-icon>mdi-sort-clock-descending</v-icon>
+                        </v-btn>
+                    </template>
+                    <span>
+                        Älteste Transaktionen Zuerst
+                    </span>
+                </v-tooltip>
+            </v-col>
+        </v-row>
         <TransitionGroup name="list">
             <TransactionCard 
+                class="list-item"
                 v-for="transaction in transactions" 
                 :key="transaction.transactionId"
                 :transaction = transaction
@@ -53,6 +94,7 @@ export default {
     data: () => ({
         transactions: [],
         loadingTransactions: false,
+        sortedByDate: "",
     }),
 
     mounted() {
@@ -61,6 +103,7 @@ export default {
         .post('api/transactions',  { accountId: this.accountId, token: localStorage.getItem("token") })
         .then(response => {
             this.transactions = response.data;
+            this.sortTransactionsByDateDesc();
         })
         .catch(e => {
             console.log(e);
@@ -70,16 +113,30 @@ export default {
             this.loadingTransactions = false;
         }) 
     },
+
+    methods: {
+        sortTransactionsByDateDesc() {
+            this.transactions.sort(function(a,b){return new Date(b.date).getTime() - new Date(a.date).getTime()});
+            this.sortedByDate = "desc";
+        },
+        sortTransactionsByDateAsc() {
+            this.transactions.sort(function(a,b){return new Date(a.date).getTime() - new Date(b.date).getTime()});
+            this.sortedByDate = "asc";
+        }
+    }
 }
 </script>
 <style scoped>
-
-.list-enter-active, .list-leave-active {
+.list-item {
   transition: all 0.5s;
+  margin-right: 10px;
 }
-.list-enter, .list-leave-to {
+.list-enter, .list-leave-to
+/* .list-complete-leave-active below version 2.1.8 */ {
   opacity: 0;
   transform: translateY(-30px);
 }
-
+.list-leave-active {
+  position: absolute;
+}
 </style>

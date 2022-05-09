@@ -1,5 +1,5 @@
 <template>
-    <v-row no-gutters class="pb-8 text-center" justify="center">
+    <v-row no-gutters class="pb-6" justify="center">
         <v-col 
             @click="openTransactions(account.accountId, account.balance)" 
             class="mouse-pointer" 
@@ -37,7 +37,7 @@
                         <v-img src="https://www.natwest.com/content/dam/natwest_com/navigation/header/natwest-logo.png" contain />
                     </v-col>
                     <v-spacer></v-spacer>
-                    <v-col cols="4">
+                    <v-col class="text-center" cols="4">
                         <span class="text-h6"> {{account.accountType}} </span> 
                         <br/>
                         <span class="text-subtitle-2"> {{account.accountSubType}} </span>
@@ -56,7 +56,7 @@
                     class="py-2"
                     justify="end"
                 >
-                    <v-col class="text-caption grey--text text--darken-1 font-italic">
+                    <v-col class="text-center text-caption grey--text text--darken-1 font-italic">
                         Valuta: {{formatDate(account.valuta)}}
                     </v-col>
                 </v-row>
@@ -81,7 +81,7 @@
 
     methods: {
         formatDate(dateIsoString) {
-            return new Date(dateIsoString).toDateString();
+            return new Date(dateIsoString).toLocaleString('de-DE');
         },
 
         formatBalance(balance) {
