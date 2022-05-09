@@ -2,6 +2,16 @@
 
 Tech Assessment for Oepfelbaum - Digital Wallet by Egzon Demaj
 
+![alt text](app_screenshot.jpg)
+
+## How to run the application locally
+1. :warning: Before anything else, make sure [Node](https://nodejs.org/en/) (+ npm) is installed
+2. Clone repository
+3. Open a terminal Inside the root directory and run `npm install`
+4. Once npm install is finished you can run `npm run simple-dev`
+5. The application should now be running at http://localhost:8080/
+
+
 &nbsp;
 ## Technologies & Frameworks
 
@@ -15,14 +25,14 @@ Tech Assessment for Oepfelbaum - Digital Wallet by Egzon Demaj
 &nbsp;
 ## Additional future Features & Refinements
 
-* <b>Backend: </b>
-  * Do not hand the actual Bearer Token to the client, rather introduce session management and save it in-memory (Redis)
-  * Make proxy-API more dynamic regarding multiple banks (right now we assume only NatWest) -> add some kind of Middleware and/or further differentiate the proxy-API in /api/<b>BANKID</b>/ENDPOINT
-  * ...
+- <b>Backend: </b>
+  - Do not hand the actual Bearer Token to the client, rather introduce session management and save it in-memory (Redis)
+  - Make proxy-API more dynamic regarding multiple banks (right now we assume only NatWest) -> add some kind of Middleware and/or further differentiate the proxy-API in /api/<b>BANKID</b>/ENDPOINT
+  - ...
 
-* <b>Frontend: </b>
-  * Allow the user to choose a period of time, in which he wants to look at his transactions
-  * Allow for more Banking-Use-Cases to be accessible by the user (depending on what the Bank-APIs offer)
-  * Pagination
-  * Introduce a State-Management library (store), especially as the Application gets more features
+- <b>Frontend: </b>
+  - Allow the user to choose a period of time, in which he wants to look at his transactions
+  - Allow for more Banking-Use-Cases to be accessible by the user (depending on what the Bank-APIs offer)
+  - Pagination
+  - Introduce a State-Management library (store), especially as the Application gets more features
 
