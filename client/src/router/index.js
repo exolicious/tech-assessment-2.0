@@ -26,6 +26,16 @@ const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
   routes
+});
+
+router.beforeEach((to, from, next) => {
+  if(to.name === "AccountsView" && from.name === "TransactionsView")
+    to.meta.transition = "fade-slide-right";
+  else
+    to.meta.transition = "fade-slide-left";
+
+  next();
 })
+
 
 export default router

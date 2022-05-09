@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <v-container>
         <TotalBalance
             :total="total"
         >
@@ -17,12 +17,32 @@
             >
             </v-progress-circular>
         </v-row>
+        <v-row justify="center" no-gutters>
+            <v-col 
+                cols="12" 
+                md="6"
+            >
+                <v-btn
+                    @click="$router.back()"
+                    icon
+                    color="primary"
+                    width="60"
+                    height="60"
+                >
+                    <v-icon class="text-h3">mdi-arrow-left</v-icon>
+                </v-btn>
+            </v-col>
+        </v-row>
         <v-row 
             no-gutters 
             justify="center" 
-            class="pb-6"
+            class="pb-2"
         >
-            <v-col cols="6" class="text-end">
+            <v-col 
+                class="text-end"
+                cols="12" 
+                md="6"
+            >
                 <v-tooltip open-delay="375" top>
                     <template v-slot:activator="{ on }">
                         <v-btn
@@ -65,7 +85,7 @@
                 :transaction = transaction
             />
         </TransitionGroup>
-    </div>
+    </v-container>
 </template>
 
 <script>
@@ -129,7 +149,6 @@ export default {
 <style scoped>
 .list-item {
   transition: all 0.5s;
-  margin-right: 10px;
 }
 .list-enter, .list-leave-to
 /* .list-complete-leave-active below version 2.1.8 */ {

@@ -1,6 +1,9 @@
 <template>
     <v-row no-gutters class="pb-6" justify="center">
-        <v-col cols="12" md="6">
+        <v-col 
+            cols="12" 
+            md="6"
+        >
             <v-sheet 
                 elevation="1"
                 rounded

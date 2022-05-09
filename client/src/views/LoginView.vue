@@ -4,7 +4,7 @@
             <span class="text-h3 font-weight-bold">Login</span>
         </v-row>
         <v-row class="ma-0" justify="center">
-            <v-col cols="4">
+            <v-col cols="12" sm="6" md="6">
                 <v-sheet  
                     class="pa-4"
                     elevation="1"

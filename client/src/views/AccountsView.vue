@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <v-container>
         <TotalBalance
             v-if="!loadingAccounts"
             :total="total"
@@ -19,7 +19,7 @@
                 :account = account
             />
         </TransitionGroup>
-    </div>
+    </v-container>
 </template>
 
 <script>
