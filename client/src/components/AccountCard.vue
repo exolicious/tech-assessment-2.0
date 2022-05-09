@@ -28,7 +28,7 @@
                     </v-btn>
                 </v-row>  
                 <v-row 
-                    class="px-4 py-8" 
+                    class="pa-8" 
                     align="center" 
                     justify="space-between"
                     no-gutters
@@ -37,12 +37,12 @@
                         <v-img src="https://www.natwest.com/content/dam/natwest_com/navigation/header/natwest-logo.png" contain />
                     </v-col>
                     <v-spacer></v-spacer>
-                    <v-col cols="2">
+                    <v-col cols="4">
                         <span class="text-h6"> {{account.accountType}} </span> 
                         <br/>
                         <span class="text-subtitle-2"> {{account.accountSubType}} </span>
                     </v-col>
-                    <v-col cols="5" class="text-end">
+                    <v-col cols="4" class="text-end">
                         <div 
                             class="text-h5" 
                             :class="account.sign === '-' ? 'red--text': ''"
@@ -87,6 +87,7 @@
         formatBalance(balance) {
             return Number.parseFloat(balance).toFixed(2);
         },
+        
         openTransactions(accountId, accountBalance) {
             this.$router.push({ name: 'TransactionsView', params: { accountId: accountId, total: accountBalance }})
         }

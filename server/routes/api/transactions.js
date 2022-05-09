@@ -39,6 +39,7 @@ function createRelevantResponseJSON(transactions) {
                         currency: transaction.Amount.Currency,
                         amount: roundTo5Rappen(transaction.Amount.Amount),
                         date: transaction.BookingDateTime,
+                        status: transaction.Status,
                         sign: transaction.CreditDebitIndicator === 'Credit' ? "" : "-" //kinda ew 
                     }
         relevantResponseJSON.push(temp);

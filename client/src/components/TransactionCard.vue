@@ -1,5 +1,5 @@
 <template>
-    <v-row class="pb-8 text-center" justify="center">
+    <v-row class="text-center" justify="center">
         <v-col cols="12" md="6">
             <v-sheet 
                 elevation="1"
@@ -7,40 +7,26 @@
                 color="grey lighten-3"
             >
                 <v-row 
-                    no-gutters 
-                    justify="end"
-                >
-                    <v-btn
-                        icon
-                        color="primary"
-                    >
-                        <v-icon>mdi-chart-line</v-icon>
-                    </v-btn>
-                    <v-btn
-                        icon
-                        color="primary">
-                        <v-icon>mdi-star</v-icon>
-                    </v-btn>
-                </v-row>  
-                <v-row 
-                    class="px-4 py-8" 
+                    class="pa-8" 
                     align="center" 
                     justify="space-between"
                     no-gutters
                 >
-                    <v-col cols="2">
-                        <span class="text-h5"> {{formatDate(transaction.date)}} </span>
+                    <v-col class="text-start" cols="8">
+                        <span class="text-body-1 font-weight-bold text--secondary"> {{formatDate(transaction.date)}} </span>
+                        <br/>
+                        <br/>
+                        <span class="text-h5"> {{transaction.information}} </span>
                     </v-col>
-
-                    <v-col class="text-center" cols="8">
-                        <span class="text-h4"> {{transaction.information}} </span>
-                    </v-col>
-                    <v-col cols="2" class="text-end">
+                    <v-col cols="4" class="text-end">
+                        <span class="text--secondary" :class="transaction.status === 'Due'? 'orange--text text--darken-2': ''">{{transaction.status}} </span>
+                        <br/>
+                        <br/>
                         <div 
                             class="text-h5" 
                             :class="transaction.sign === '-' ? 'red--text': ''"
                         > 
-                            {{transaction.sign}} {{transaction.amount}} {{transaction.currency}}
+                            {{transaction.sign}} {{formatBalance(transaction.amount)}} {{transaction.currency}}
                         </div>
                     </v-col>
                 </v-row>
