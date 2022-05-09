@@ -6,12 +6,13 @@ const authRouter = express.Router();
 const encodedRedirectUri = 'http%3A%2F%2Flocalhost%3A8080%2Fredirect';
 const clientId = 'r_1SOy46WbVz326O5QyvAWZ2gQK_ehZMpGFReeAYf2E=';
 const clientSecret = 'J3zCTeJ6bWiv-oEWfHR5BFdCDoCITNN19mK3TKKjVcM=';
-const authUsername = '123456789012@471959b1-3a9f-4a88-8376-b5c93bc75e59.example.org';
+var authUsername = '';
 
 //https://api.sandbox.natwest.com/authorize?client_id=r_1SOy46WbVz326O5QyvAWZ2gQK_ehZMpGFReeAYf2E=&response_type=code id_token&scope=openid accounts&redirect_uri=http%3A%2F%2Flocalhost%3A8080%2F&request=1c543ea9-d1ad-4ec4-9790-11c05f82b143&request=1c543ea9-d1ad-4ec4-9790-11c05f82b143 
 
 authRouter.post('/',  (req, res) => {
     console.log(req.body.simulateProduction);
+    authUsername = req.body.email;
     if(req.body.simulateProduction)
         prodAuthJourney(res);
     else

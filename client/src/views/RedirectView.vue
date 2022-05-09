@@ -17,7 +17,7 @@ export default {
             .post('/api/auth/code', {code: code})
             .then(response => {
                 localStorage.setItem("token", response.data.token);
-                this.$router.push({ name: 'AccountsView' });
+                this.$router.replace({ name: 'AccountsView' });
             })
     }
 }

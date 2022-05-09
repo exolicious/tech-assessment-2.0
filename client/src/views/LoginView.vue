@@ -59,7 +59,7 @@ export default {
         login() {
             this.loadingAuth = true;
             this.$http
-                .post('/api/auth', { simulateProduction: this.simulateProduction })
+                .post('/api/auth', { simulateProduction: this.simulateProduction, email: this.email })
                 .then(response => {
                     console.log(response.data);
                     if(this.simulateProduction)
