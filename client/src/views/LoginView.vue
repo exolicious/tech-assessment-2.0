@@ -20,8 +20,15 @@
                         <v-text-field
                             v-model="password"
                             label="Password"
+                            type="password"
                         >
                         </v-text-field>
+                        <v-checkbox
+                            color="primary"
+                            label="Simulate Production Customer Consent"
+                            v-model="simulateProduction"
+                        >
+                        </v-checkbox>
                         <v-btn 
                             @click="login" 
                             color="primary"
@@ -42,21 +49,26 @@ export default {
     name: 'LoginView',
     
     data: () => ({
-        email: "",
-        password: "",
+        email: "123456789012@471959b1-3a9f-4a88-8376-b5c93bc75e59.example.org",
+        password: "12345678",
         loadingAuth: false,
+        simulateProduction: false
     }),
 
     methods: {
         login() {
             this.loadingAuth = true;
             this.$http
-                .get('/api/auth')
+                .post('/api/auth', { simulateProduction: this.simulateProduction })
                 .then(response => {
-                    console.log(response.data.token);
-                    this.loadingAuth = false;
-                    localStorage.setItem("token", response.data.token);
-                    this.$router.push({ name: 'AccountsView' })
+                    console.log(response.data);
+                    if(this.simulateProduction)
+                        window.location.href = response.data;
+                    else {
+                        this.loadingAuth = false;
+                        localStorage.setItem("token", response.data.token);
+                        this.$router.push({ name: 'AccountsView' });
+                    }
                 })
                 .catch(e => {
                     console.log(e);

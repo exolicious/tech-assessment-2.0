@@ -28,6 +28,7 @@ Tech Assessment for Oepfelbaum - Digital Wallet by Egzon Demaj
 - <b>Backend: </b>
   - Do not hand the actual Bearer Token to the client, rather introduce session management and save it in-memory (Redis)
   - Make proxy-API more dynamic regarding multiple banks (right now we assume only NatWest) -> add some kind of Middleware and/or further differentiate the proxy-API in /api/<b>BANKID</b>/ENDPOINT
+  - User Consent is achieved by programmatically sending a request to the NatWest-API, usually the user should be redirected
   - ...
 
 - <b>Frontend: </b>

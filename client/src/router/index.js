@@ -15,11 +15,16 @@ const routes = [
     component: () => import(/* webpackChunkName: "accounts" */ '../views/AccountsView.vue')
   },
   {
-    path: '/transactions/',
+    path: '/transactions',
     name: 'TransactionsView',
     component: () => import(/* webpackChunkName: "transactions" */ '../views/TransactionsView.vue'),
     props: true,
   },
+  {
+    path: '/redirect',
+    name: 'RedirectView',
+    component: () => import(/* webpackChunkName: "transactions" */ '../views/RedirectView.vue'),
+  }
 ]
 
 const router = new VueRouter({

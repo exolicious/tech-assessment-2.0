@@ -42,7 +42,7 @@ export default {
     mounted() {
         this.loadingAccounts = true;
         this.$http
-        .post('api/accounts', {token: localStorage.getItem("token")})
+        .post('api/accounts/', {token: localStorage.getItem("token")})
         .then(response => {
             this.accounts = response.data;
             
