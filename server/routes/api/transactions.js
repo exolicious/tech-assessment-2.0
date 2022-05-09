@@ -19,7 +19,7 @@ transactionsRouter.post('/', async (req, res) => {
 
 function getTransactions(accountId, userAccessToken) {
     let toDate = new Date();
-    let fromDate = new Date(fromDate.getTime()-(30*24*3600000));
+    let fromDate = new Date(toDate.getTime()-(30*24*3600000));
 
     return axios
         .get(`https://ob.sandbox.natwest.com/open-banking/v3.1/aisp/accounts/${accountId}/transactions`, { agent: httpsAgent, headers: { Authorization: `Bearer ${userAccessToken}` }, params: { toBookingDateTime: toDate.toISOString(), fromBookingDateTime: fromDate.toISOString()} })
