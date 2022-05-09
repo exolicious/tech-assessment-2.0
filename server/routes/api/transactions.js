@@ -18,8 +18,11 @@ transactionsRouter.post('/', async (req, res) => {
 });
 
 function getTransactions(accountId, userAccessToken) {
+    let toDate = new Date();
+    let fromDate = new Date(fromDate.getTime()-(30*24*3600000));
+
     return axios
-        .get(`https://ob.sandbox.natwest.com/open-banking/v3.1/aisp/accounts/${accountId}/transactions`, { agent: httpsAgent, headers: { Authorization: `Bearer ${userAccessToken}` }})
+        .get(`https://ob.sandbox.natwest.com/open-banking/v3.1/aisp/accounts/${accountId}/transactions`, { agent: httpsAgent, headers: { Authorization: `Bearer ${userAccessToken}` }, params: { toBookingDateTime: toDate.toISOString(), fromBookingDateTime: fromDate.toISOString()} })
         .then(response => {
             console.log(response.data.Data.Transaction);
             return response.data.Data.Transaction; //there are multiple entries for each accountid with the type being different, for this apps sake we just take the first entry which has type "expected"
