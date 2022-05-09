@@ -13,7 +13,7 @@
     <v-main>
       <Transition name="fade" mode="out-in">
         <keep-alive>
-          <router-view />
+          <router-view :key="$route.params.accountId" />
         </keep-alive>
       </Transition>
     </v-main>

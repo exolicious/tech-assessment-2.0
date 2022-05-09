@@ -39,18 +39,21 @@ export default {
         loadingAccounts: false,
     }),
 
-    created() {
+    mounted() {
         this.loadingAccounts = true;
         this.$http
         .post('api/accounts', {token: localStorage.getItem("token")})
         .then(response => {
             this.accounts = response.data;
-            this.loadingAccounts = false;
+            
         })
         .catch(e => {
             console.log(e);
             //error page or something
         })
+        .finally(() => {
+            this.loadingAccounts = false;
+        }) 
     },
 
     computed: {

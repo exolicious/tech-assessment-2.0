@@ -56,19 +56,19 @@ export default {
     }),
 
     mounted() {
-        console.log(this.accountId);
-
         this.loadingTransactions = true;
         this.$http
         .post('api/transactions',  { accountId: this.accountId, token: localStorage.getItem("token") })
         .then(response => {
             this.transactions = response.data;
-            this.loadingTransactions = false;
         })
         .catch(e => {
             console.log(e);
             //error page or something
         })
+        .finally(() => {
+            this.loadingTransactions = false;
+        }) 
     },
 }
 </script>
