@@ -1,6 +1,8 @@
 # 🍎 Oepfelbaum Tech Assessment
 
-Tech Assessment for Oepfelbaum - Digital Wallet by Egzon Demaj
+### Tech Assessment for Oepfelbaum - Digital Wallet by Egzon Demaj
+
+This App is a "Online-Wallet" which uses OpenBanking certificates to authorize the server application as a third party provider and fetches dummy data from the NatWest Developer Sandbox.
 
 ![alt text](app_screenshot.jpg)
 
